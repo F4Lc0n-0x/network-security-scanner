@@ -125,7 +125,7 @@ def main():
             "ports" : [],
             "timestamp" : time
         }
-        with ThreadPoolExecutor(max_workers=1) as ex:
+        with ThreadPoolExecutor(max_workers=50) as ex:
             scanning = list(ex.map(scan_port , repeat(ip) , port_list))
         result["ports"].extend(scanning)
         filename = f"reports/scan_{args.target}_{t.strftime('%Y%m%d_%H%M%S')}.json"
